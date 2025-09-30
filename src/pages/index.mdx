@@ -1,0 +1,186 @@
+---
+layout: ../layouts/Layout.astro
+title: 'SCUBA: Salesforce Computer Use Benchmark'
+description: Simple project page template for your research paper, built with Astro and Tailwind CSS
+favicon: favicon.svg
+thumbnail: screenshot-light.png
+---
+
+import Header from "../components/Header.astro";
+import Video from "../components/Video.astro";
+import HighlightedSection from "../components/HighlightedSection.astro";
+import SmallCaps from "../components/SmallCaps.astro";
+import Figure from "../components/Figure.astro";
+import Image from "../components/Image.astro";
+import TwoColumns from "../components/TwoColumns.astro";
+import YouTubeVideo from "../components/YouTubeVideo.astro";
+import LaTeX from "../components/LaTeX.astro";
+
+import { ImageComparison } from "../components/ImageComparison.tsx";
+
+import outside from "../assets/outside.mp4";
+import demo from "../assets/demo.mp4";
+import transformer from "../assets/transformer.webp";
+import Splat from "../components/Splat.tsx"
+import dogsDiffc from "../assets/dogs-diffc.png"
+import dogsTrue from "../assets/dogs-true.png"
+import task_distribution from "../assets/task_distribution.png"
+import task_difficulty from "../assets/task_difficulty.png"
+// import crmbench from "../assets/logo.png"
+
+
+import CodeBlock from "../components/CodeBlock.astro";
+import Table from "../components/Table.astro";
+export const components = {pre: CodeBlock, table: Table}
+
+<Header
+  title={frontmatter.title}
+  authors={[
+    {
+      name: "Yutong Dai",
+      url: "https://roth.rbind.io",
+      // institution: "Independent",
+     // notes: ["*", "†"],
+    },
+    {
+      name: "Krithika Ramakrishnan",
+    },
+    {
+      name: "Jing Gu",
+    },
+    {
+      name: "Matthew Fernandez",
+    },
+    {
+      name: "Yanqi Luo",
+    },
+    {
+      name: "Viraj Prabhu",
+    },
+    {
+      "name": "Zhenyu Hu",  
+    },
+    {
+      "name": "Silvio Savarese",
+    },
+    {
+      "name": "Caiming Xiong",
+    },
+    {
+      "name": "Zeyuan Chen",
+    },
+    {
+      "name": "Ran Xu",
+    }
+  ]}
+  conference="Salesforce AI Research"
+  notes={[
+  //  {
+  //    symbol: "*",
+  //    text: "author note one",
+  //  },
+  //  {
+  //    symbol: "†",
+  //    text: "author note two",
+  //  },
+  ]}
+  links={[
+    //{
+    //  name: "Paper",
+    //  url: "",
+    //  icon: "ri:file-pdf-2-line",
+    //},
+    {
+      name: "arXiv (coming soon)",
+      url: "",
+      icon: "academicons:arxiv",
+    },
+    {
+      name: "Code (coming soon)",
+      url: "",
+      icon: "ri:github-line",
+    }
+  ]}
+  />
+
+<Video source={demo} />
+
+<HighlightedSection>
+
+## Abstract
+
+We introduce SCUBA, a benchmark designed to evaluate computer-use agents on customer relationship management (CRM) workflows within the Salesforce platform. SCUBA contains 300 task instances derived from real user interviews, spanning three primary personas—platform administrators, sales representatives, and service agents. The tasks test a range of enterprise-critical abilities, including Enterprise Software UI navigation, data manipulation, workflow automation, information retrieval, and troubleshooting. To ensure realism, SCUBA operates in Salesforce sandbox environments with support for parallel execution and fine-grained evaluation metrics to capture milestone progress. We benchmark a diverse set of agents under both zero-shot and demonstration-augmented settings. We observed huge performance gaps in different agent design paradigm and gaps between the open-source model and the closed-source model. In the zero-shot setting, open-source model powered computer-use agents that have strong performance on related benchmarks like OSWorld only have less than 5\% success rate on SCUBA, while methods built on closed-source models can still have up to 39\% percent task success rate. In the demonstration-augmented settings, task success rates can be improved to 50\% while simultaneously reducing time and costs by 13\% and 16\%, respectively. These findings highlight both the challenges of enterprise tasks automation and the promise of agentic solutions. By offering a realistic benchmark with interpretable evaluation, SCUBA aims to accelerate progress in building reliable computer-use agents for complex business software ecosystems.
+
+</HighlightedSection>
+
+{/* ## Figures
+
+Use the figure component to display images, videos, equations, or any other element, with an optional caption.
+
+<Figure>
+  <Image slot="figure" source={transformer} altText="Diagram of the transformer deep learning architecture." />
+  <span slot="caption">Diagram of the transformer deep learning architecture.</span>
+</Figure> */}
+
+## Benchmark Statistics
+
+SCUBA contains 300 task instances, instantiated from 60 task templates, covering three primary personas—platform administrators, sales representatives, and service agents. Each split has 3 levels of difficulty. Each instance has a evaulator and assigns 2 to 5 milestone scores, serving as the process reward.
+
+<TwoColumns>
+  <Figure slot="left">
+    <Image slot="figure" source={task_distribution} altText="." />
+  <span slot="caption">Tasks distribution in different domains.</span>
+  </Figure>
+  <Figure slot="right">
+    <Image slot="figure" source={task_difficulty} altText="." />
+  <span slot="caption">Difficulty distribution by splits.</span>
+  </Figure>
+</TwoColumns> 
+
+#### Sample Tasks
+
+* [Admin/dashboard] I want to create a report using the Accounts type and name it MyAccountsRPT. If no data shows up in the preview, click All Time so it includes results from all time. Then add filters so it only shows records where Industry is Technology and Annual Revenue is greater than 1,000,000. If you don’t see the Industry or Annual Revenue fields in the table, add them first.
+* [Sales/opportunity] Quick follow-up from my chat with Sarah Kim (Director of Operations) at Next Horizon Technologies. Definite potential here. Please: - Create an account for Next Horizon Technologies - Set Jordan Lee as the point of contact - Mobile: 777-444-1111.
+* [Service/case] Please set up a case assignment rule called Billing Cases Assignment Rule. Route any case to the billing support queue if the description mentions “billing” or if the case number begins with 5. Give the description condition higher precedence, so it’s evaluated first.
+
+
+{/* ## LaTeX */}
+
+{/* You can also add LaTeX formulas, rendered during the build process using [KaTeX](https://katex.org/) so they're quick to load for visitors of your project page. You can write them inline, like this: <LaTeX inline formula="a^2 + b^2 = c^2" />. Or, you can write them as a block:
+
+<LaTeX formula="\int_a^b f(x) dx" /> */}
+
+## Agent Baselines
+
+
+
+## Leaderboard
+
+coming soon ...
+
+{/* You can add simple tables using [GitHub Flavored Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables):
+
+| Model | Accuracy | F1 score | Training time (hours) |
+| :--- | :---: | :---: | :---: |
+| BERT-base | 0.89 | 0.87 | 4.5 |
+| RoBERTa-large | 0.92 | 0.91 | 7.2 |
+| DistilBERT | 0.86 | 0.84 | 2.1 |
+| XLNet | 0.90 | 0.89 | 6.8 | */}
+
+
+<HighlightedSection>
+## FAQs
+
+coming soon ...
+
+</HighlightedSection>
+
+## BibTeX citation
+
+```bibtex
+@misc{dai2025scuba,
+  author = "{Yutong Dai, Krithika Ramakrishnan, Jing Gu, Matthew Fernandez, Yanqi Luo, Viraj Prabhu, Zhenyu Hu, Silvio Savarese, Caiming Xiong, Zeyuan Chen, Ran Xu}",
+  title = "SCUBA: Salesforce Computer Use Benchmark",
+  year = "2025"
+}
+```

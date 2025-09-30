@@ -27,7 +27,8 @@ import dogsDiffc from "../assets/dogs-diffc.png"
 import dogsTrue from "../assets/dogs-true.png"
 import task_distribution from "../assets/task_distribution.png"
 import task_difficulty from "../assets/task_difficulty.png"
-// import crmbench from "../assets/logo.png"
+import pareto_front_costs_success_rate from "../assets/pareto_front_costs_success_rate.png"
+import pareto_front_time_success_rate from "../assets/pareto_front_time_success_rate.png"
 
 
 import CodeBlock from "../components/CodeBlock.astro";
@@ -45,33 +46,44 @@ export const components = {pre: CodeBlock, table: Table}
     },
     {
       name: "Krithika Ramakrishnan",
+      url: "https://www.linkedin.com/in/krithika-ramakrishnan-1a34b3109/",
     },
     {
       name: "Jing Gu",
+      url: "https://g-jing.github.io/",
     },
     {
       name: "Matthew Fernandez",
+      url: "https://www.linkedin.com/in/matthew-fernandez-32b19814b/"
     },
     {
       name: "Yanqi Luo",
+      url: "https://www.linkedin.com/in/yanqi-luo/"
     },
     {
       name: "Viraj Prabhu",
+      url: "https://virajprabhu.github.io/"
     },
     {
-      "name": "Zhenyu Hu",  
+      name: "Zhenyu Hu",  
+      url: "https://www.linkedin.com/in/eric-hu-92136a20/"
     },
     {
-      "name": "Silvio Savarese",
+      name: "Silvio Savarese",
+      url: "https://www.linkedin.com/in/silvio-savarese-97b76114/"
     },
     {
-      "name": "Caiming Xiong",
+      name: "Caiming Xiong",
+      url: "http://cmxiong.com/"
     },
     {
-      "name": "Zeyuan Chen",
+      name: "Zeyuan Chen",
+      url: "https://www.linkedin.com/in/zeyuan-chen-0253b6141/"
+
     },
     {
-      "name": "Ran Xu",
+      name: "Ran Xu",
+      url: "https://www.linkedin.com/in/ran-xu-a2765924/"
     }
   ]}
   conference="Salesforce AI Research"
@@ -167,6 +179,26 @@ SCUBA contains 300 task instances, instantiated from 60 task templates, covering
 | RoBERTa-large | 0.92 | 0.91 | 7.2 |
 | DistilBERT | 0.86 | 0.84 | 2.1 |
 | XLNet | 0.90 | 0.89 | 6.8 | */}
+
+## Task Success, Efficiency, and Cost 
+
+For enterprise use cases, while having high success rates is crucial, costs and latency are also important factors. We visualize the agents’ performance metrics in the following two figures. Orange squares and blue circles represent the browser-use agents and computer-use agents’ performance metrics under zero-shot setting. The
+arrow points the performance metrics under the demonstration-augmented setting. The arrow that points to
+top-left are desired, since it means improvements. Green zone means low costs/latency and high success rates
+zone; vice versa for the red zone.
+
+<Figure>
+  <Image slot="figure" source={pareto_front_costs_success_rate} altText="Costs v.s. Success Rate." />
+  <span slot="caption">Costs v.s. Success Rate.</span>
+</Figure>
+
+<Figure>
+  <Image slot="figure" source={pareto_front_time_success_rate} altText="Time v.s. Success Rate." />
+  <span slot="caption">Time v.s. Success Rate.</span>
+</Figure>
+
+
+
 
 
 <HighlightedSection>

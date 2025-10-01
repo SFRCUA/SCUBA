@@ -2,7 +2,7 @@
 layout: ../layouts/Layout.astro
 title: 'SCUBA: Salesforce Computer Use Benchmark'
 description: Simple project page template for your research paper, built with Astro and Tailwind CSS
-favicon: favicon.svg
+favicon: crmbench.png
 thumbnail: screenshot-light.png
 ---
 
@@ -23,8 +23,6 @@ import outside from "../assets/outside.mp4";
 import demo from "../assets/demo.mp4";
 import transformer from "../assets/transformer.webp";
 import Splat from "../components/Splat.tsx"
-import dogsDiffc from "../assets/dogs-diffc.png"
-import dogsTrue from "../assets/dogs-true.png"
 import task_distribution from "../assets/task_distribution.png"
 import task_difficulty from "../assets/task_difficulty.png"
 import pareto_front_costs_success_rate from "../assets/pareto_front_costs_success_rate.png"
@@ -104,13 +102,13 @@ export const components = {pre: CodeBlock, table: Table}
     //  icon: "ri:file-pdf-2-line",
     //},
     {
-      name: "arXiv (coming soon)",
-      url: "",
+      name: "arXiv",
+      url: "https://arxiv.org/pdf/2509.26506",
       icon: "academicons:arxiv",
     },
     {
       name: "Code (coming soon)",
-      url: "",
+      url: "https://github.com/SalesforceAIResearch/SCUBA",
       icon: "ri:github-line",
     }
   ]}

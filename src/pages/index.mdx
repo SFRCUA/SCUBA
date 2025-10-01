@@ -15,6 +15,7 @@ import Image from "../components/Image.astro";
 import TwoColumns from "../components/TwoColumns.astro";
 import YouTubeVideo from "../components/YouTubeVideo.astro";
 import LaTeX from "../components/LaTeX.astro";
+import QA from "../components/QA.astro";
 
 import { ImageComparison } from "../components/ImageComparison.tsx";
 import PerformanceTable from "../components/PerformanceTable.tsx";
@@ -26,6 +27,7 @@ import task_distribution from "../assets/task_distribution.png"
 import task_difficulty from "../assets/task_difficulty.png"
 import pareto_front_costs_success_rate from "../assets/pareto_front_costs_success_rate.png"
 import pareto_front_time_success_rate from "../assets/pareto_front_time_success_rate.png"
+import apply_for_a_org from "../assets/apply_for_a_org.png"
 
 
 import CodeBlock from "../components/CodeBlock.astro";
@@ -100,6 +102,7 @@ export const components = {pre: CodeBlock, table: Table}
     //  url: "",
     //  icon: "ri:file-pdf-2-line",
     //},
+    // search icon here: https://remixicon.com/icon/cloud-line
     {
       name: "arXiv",
       url: "https://arxiv.org/pdf/2509.26506",
@@ -109,6 +112,16 @@ export const components = {pre: CodeBlock, table: Table}
       name: "Code (coming soon)",
       url: "https://github.com/SalesforceAIResearch/SCUBA",
       icon: "ri:github-line",
+    },
+    {
+      name: "Environment",
+      url: "#create_org",
+      icon: "ri:cloud-line",
+    },
+    {
+      name: "Leaderboard",
+      url: "#leaderboard",
+      icon: "ri:bar-chart-2-line",
     }
   ]}
   />
@@ -116,12 +129,17 @@ export const components = {pre: CodeBlock, table: Table}
 <Video source={demo} />
 
 <HighlightedSection>
+## 📢 Updates
+
+[2025-09-30] SCUBA paper is now available on arXiv!
+
+
+</HighlightedSection>
 
 ## Abstract
 
 We introduce SCUBA, a benchmark designed to evaluate computer-use agents on customer relationship management (CRM) workflows within the Salesforce platform. SCUBA contains 300 task instances derived from real user interviews, spanning three primary personas—platform administrators, sales representatives, and service agents. The tasks test a range of enterprise-critical abilities, including Enterprise Software UI navigation, data manipulation, workflow automation, information retrieval, and troubleshooting. To ensure realism, SCUBA operates in Salesforce sandbox environments with support for parallel execution and fine-grained evaluation metrics to capture milestone progress. We benchmark a diverse set of agents under both zero-shot and demonstration-augmented settings. We observed huge performance gaps in different agent design paradigms and gaps between the open-source model and the closed-source model. In the zero-shot setting, open-source model powered computer-use agents that have strong performance on related benchmarks like OSWorld only have less than 5\% success rate on SCUBA, while methods built on closed-source models can still have up to 39\% task success rate. In the demonstration-augmented settings, task success rates can be improved to 50\% while simultaneously reducing time and costs by 13\% and 16\%, respectively. These findings highlight both the challenges of enterprise tasks automation and the promise of agentic solutions. By offering a realistic benchmark with interpretable evaluation, SCUBA aims to accelerate progress in building reliable computer-use agents for complex business software ecosystems.
 
-</HighlightedSection>
 
 {/* ## Figures
 
@@ -164,6 +182,8 @@ SCUBA contains 300 task instances, instantiated from 60 task templates, covering
 
 ## Leaderboard
 
+<div id="leaderboard"></div>
+
 <PerformanceTable client:load />
 
 
@@ -177,7 +197,7 @@ SCUBA contains 300 task instances, instantiated from 60 task templates, covering
 | DistilBERT | 0.86 | 0.84 | 2.1 |
 | XLNet | 0.90 | 0.89 | 6.8 | */}
 
-## Task Success, Efficiency, and Cost 
+## Task Success, Efficiency, and Cost Trade-off
 
 For enterprise use cases, while having high success rates is crucial, costs and latency are also important factors. We visualize the agents’ performance metrics in the following two figures. Orange squares and blue circles represent the browser-use agents and computer-use agents’ performance metrics under zero-shot setting. The
 arrow points the performance metrics under the demonstration-augmented setting. The arrow that points to
@@ -201,16 +221,29 @@ zone; vice versa for the red zone.
 <HighlightedSection>
 ## FAQs
 
-coming soon ...
+<div id="create_org"></div>
+
+<QA>
+  <div slot="question">How apply for a Salesforce developer sandbox org?</div>
+  <div slot="answer">
+    To apply for a developer org, please visit <code>https://www.salesforce.com/form/developer-signup/?d=pb</code>.
+    You need to fill the required information and submit the form. Make sure the `Work Email` is your real email that can receive the verification code. Other fields can be filled with any information. Once the org is created, you can follow the instructions you received by email to access the org.
+    {/* <Image slot="figure" source={apply_for_a_org} altText="Apply for a Salesforce developer sandbox org." /> */}
+  </div>
+</QA>
 
 </HighlightedSection>
 
 ## BibTeX citation
 
 ```bibtex
-@misc{dai2025scuba,
-  author = "{Yutong Dai, Krithika Ramakrishnan, Jing Gu, Matthew Fernandez, Yanqi Luo, Viraj Prabhu, Zhenyu Hu, Silvio Savarese, Caiming Xiong, Zeyuan Chen, Ran Xu}",
-  title = "SCUBA: Salesforce Computer Use Benchmark",
-  year = "2025"
+@misc{dai2025scubasalesforcecomputeruse,
+      title={SCUBA: Salesforce Computer Use Benchmark}, 
+      author={Yutong Dai and Krithika Ramakrishnan and Jing Gu and Matthew Fernandez and Yanqi Luo and Viraj Prabhu and Zhenyu Hu and Silvio Savarese and Caiming Xiong and Zeyuan Chen and Ran Xu},
+      year={2025},
+      eprint={2509.26506},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2509.26506}, 
 }
 ```

@@ -18,6 +18,11 @@
   text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px; /* Account for fixed header and navigation */
+}
+
 body {
   font-family: "Noto Sans", sans-serif;
 }

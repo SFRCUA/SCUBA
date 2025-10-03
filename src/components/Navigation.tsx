@@ -66,6 +66,18 @@ export default function Navigation() {
                   GUI Test-time Scaling Agent
                 </div>
               </a>
+            <a
+                href="https://arxiv.org/abs/2510.01524"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-3 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors duration-200"
+                onClick={closeDropdown}
+            >
+                <div className="font-medium">WALT</div>
+                <div className="text-sm text-zinc-600 dark:text-zinc-400">
+                    Web Agents that Learn Tools
+                </div>
+            </a>
             </div>
           </div>
         )}
